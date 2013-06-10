@@ -2,14 +2,13 @@
 
 Summary:	A MMX/SSE2 accelerated library for manipulating JPEG image files
 Name:		libjpeg-turbo
-Version:	1.2.1
+Version:	1.3.0
 Release:	1
 License:	wxWidgets
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libjpeg-turbo/%{name}-%{version}.tar.gz
-# Source0-md5:	f61e60ff01381ece4d2fe65eeb52669e
+# Source0-md5:	e1e65cc711a1ade1322c06ad4a647741
 URL:		http://libjpeg-turbo.virtualgl.org/
-Patch0:		%{name}-turbojpeg.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libstdc++-devel
@@ -54,7 +53,6 @@ text comments into a JPEG file.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -62,7 +60,7 @@ text comments into a JPEG file.
 %{__autoconf}
 %{__automake}
 %configure \
-	--enable-shared	\
+	--disable-static	\
 	--with-jpeg8
 %{__make}
 
