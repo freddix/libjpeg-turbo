@@ -1,13 +1,15 @@
+# based on PLD Linux spec git://git.pld-linux.org/packages/ilibjpeg-turbo.git
+
 %define		libjpeg_ver	8c
 
 Summary:	A MMX/SSE2 accelerated library for manipulating JPEG image files
 Name:		libjpeg-turbo
-Version:	1.3.0
-Release:	2
+Version:	1.3.1
+Release:	1
 License:	wxWidgets
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libjpeg-turbo/%{name}-%{version}.tar.gz
-# Source0-md5:	e1e65cc711a1ade1322c06ad4a647741
+# Source0-md5:	2c3a68129dac443a72815ff5bb374b05
 URL:		http://libjpeg-turbo.virtualgl.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -70,6 +72,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+
 %check
 %{__make} -j1 test
 
@@ -91,8 +95,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libjpeg.so
 %attr(755,root,root) %{_libdir}/libturbojpeg.so
-%{_libdir}/libjpeg.la
-%{_libdir}/libturbojpeg.la
 %{_includedir}/jconfig.h
 %{_includedir}/jerror.h
 %{_includedir}/jmorecfg.h
